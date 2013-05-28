@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<!-- 
+Copyright (C) 2002-2013 3fConsulting s.r.l.
+
+This program is free software: you can redistribute it and/or modify it under the terms of the
+GNU General Public License as published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without
+even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If
+not, see <http://www.gnu.org/licenses/>.
+-->
+
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
+	<portlet>
+		<portlet-name>1</portlet-name>
+		<display-name>My Workflow Status</display-name>
+		<portlet-class>
+			it.tref.liferay.statusworkflow.portlet.StatusWorkflowPortlet
+		</portlet-class>
+		<init-param>
+			<name>view-template</name>
+			<value>/html/statusworkflow/view.jsp</value>
+		</init-param>
+		<init-param>
+			<name>config-jsp</name>
+			<value>/html/statusworkflow/configuration.jsp</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+		</supports>
+		<resource-bundle>resource.Resource</resource-bundle>
+		<portlet-info>
+			<title>My Workflow Status</title>
+			<short-title>My Workflow Status</short-title>
+			<keywords>workflow status tasks</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+	</portlet>
+</portlet-app>
