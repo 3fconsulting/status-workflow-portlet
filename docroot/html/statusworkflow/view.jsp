@@ -124,7 +124,12 @@ not, see <http://www.gnu.org/licenses/>.
 				{
 					dialog: {
 						align: Liferay.Util.Window.ALIGN_CENTER,
-						width: 960
+						width: 960,
+						on: {
+							close: function(event) {
+								<portlet:namespace />refresh();
+							}
+						}
 					},
 					title: title,
 					uri: uri
@@ -153,7 +158,7 @@ not, see <http://www.gnu.org/licenses/>.
 					on: {
 						start: function() {
 							content.attr('loading', true);
-							var img = "<img width='10px' src='/html/themes/_unstyled/images/application/loading_indicator.gif' />";
+							var img = "<img width='10px' src='<%=PortalUtil.getPathContext()%>/html/themes/_unstyled/images/application/loading_indicator.gif' />";
 							content.html(img);
 						},
 						complete: function() {
@@ -223,7 +228,7 @@ not, see <http://www.gnu.org/licenses/>.
 								data-controlPanelCategory="<%=controlPanelCategory%>"
 								href="<%=workflowTaskURL.toString()%>"
 								title="javax.portlet.title.153">
-								<img src="/html/icons/my_workflow_tasks.png" />
+								<img src='<%=PortalUtil.getPathContext() + "/html/icons/my_workflow_tasks.png"%>' />
 							</aui:a>
 						</aui:column>
 					</aui:layout>
@@ -279,6 +284,20 @@ not, see <http://www.gnu.org/licenses/>.
 								 '<%=countTaksUserRolesURL%>');
 						});
 						
+						Liferay.provide(
+							window,
+							'<portlet:namespace />refresh',
+							function() {
+								var A = AUI();
+								<portlet:namespace />loadCountValue('<portlet:namespace />countTasksUser', 
+									'<%=countTasksUserURL%>');
+								
+								<portlet:namespace />loadCountValue('<portlet:namespace />countTaksUserRoles',
+								 	'<%=countTaksUserRolesURL%>');
+							},
+							['aui-base']
+						);
+						
 					</aui:script>
 
 				</c:when>
@@ -291,7 +310,7 @@ not, see <http://www.gnu.org/licenses/>.
 								data-controlPanelCategory="<%=controlPanelCategory%>"
 								href="<%=workflowTaskURL.toString()%>"
 								title="javax.portlet.title.153">
-								<img src="/html/icons/my_workflow_tasks.png" />
+								<img src='<%=PortalUtil.getPathContext() +"/html/icons/my_workflow_tasks.png"%>' />
 							</aui:a>
 						</aui:column>
 						<aui:column>
@@ -340,6 +359,20 @@ not, see <http://www.gnu.org/licenses/>.
 								 '<%=countTaksUserRolesURL%>');
 						});
 						
+						Liferay.provide(
+							window,
+							'<portlet:namespace />refresh',
+							function() {
+								var A = AUI();
+								<portlet:namespace />loadCountValue('<portlet:namespace />countTasksUser', 
+									'<%=countTasksUserURL%>');
+								
+								<portlet:namespace />loadCountValue('<portlet:namespace />countTaksUserRoles',
+									 '<%=countTaksUserRolesURL%>');
+							},
+							['aui-base']
+						);
+						
 					</aui:script>
 
 				</c:when>
@@ -350,7 +383,7 @@ not, see <http://www.gnu.org/licenses/>.
 							data-controlPanelCategory="<%=controlPanelCategory%>"
 							href="<%=workflowTaskURL.toString()%>"
 							title="javax.portlet.title.153">
-							<img src="/html/icons/my_workflow_tasks.png" />
+							<img src='<%=PortalUtil.getPathContext() +"/html/icons/my_workflow_tasks.png"%>' />
 						</aui:a>
 					</div>
 
@@ -446,6 +479,20 @@ not, see <http://www.gnu.org/licenses/>.
 							<portlet:namespace />loadCountValue('<portlet:namespace />countTaksUserRoles', '<%=countTaksUserRolesURL%>',
 								'<portlet:namespace />countTaksUserRolesContainer', <portlet:namespace />successCallback, '<%=colorCountTasksUserRolesText %>', '<%=colorCountTasksUserRolesFull%>', '<%=colorCountTasksUserRolesEmpty%>');
 						});
+						
+						Liferay.provide(
+							window,
+							'<portlet:namespace />refresh',
+							function() {
+								var A = AUI();
+								<portlet:namespace />loadCountValue('<portlet:namespace />countTasksUser', '<%=countTasksUserURL%>',
+									'<portlet:namespace />countTasksUserContainer', <portlet:namespace />successCallback, '<%=colorCountTasksUserText %>', '<%=colorCountTasksUserFull%>', '<%=colorCountTasksUserEmpty%>');
+														
+								<portlet:namespace />loadCountValue('<portlet:namespace />countTaksUserRoles', '<%=countTaksUserRolesURL%>',
+									'<portlet:namespace />countTaksUserRolesContainer', <portlet:namespace />successCallback, '<%=colorCountTasksUserRolesText %>', '<%=colorCountTasksUserRolesFull%>', '<%=colorCountTasksUserRolesEmpty%>');
+							},
+							['aui-base']
+						);
 						
 					</aui:script>
 
